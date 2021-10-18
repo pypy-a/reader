@@ -15,8 +15,9 @@ pipeline{
                 git 'https://github.com/pypy-a/reader.git'
                 sh '''
                     pwd
-                    touch python.tgz
-                    tar --exclude=python.tgz -zcvf python.tgz .
+                    cd ..
+                    tar -cvzf python.tgz /var/lib/jenkins/workspace/python_task1@2
+                    mv python.tgz /var/lib/jenkins/workspace/python_task1@2
                 '''
             }
             post{
@@ -28,6 +29,32 @@ pipeline{
                 }
                 failure{
                     echo "========A execution failed========"
+                }
+            }
+        }
+        stage("build app") {
+            agent {
+                docker {
+                    image 'python:3.7-alpine'
+                }
+            }
+            steps{
+                echo "========executing B========"
+                echo "build app"
+                sh '''
+                   python -m py_compile setup.py
+                '''
+                stash(name: 'reader_pyt', includes: 'reader/*.py*')
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========B executed successfully========"
+                }
+                failure{
+                    echo "========B execution failed========"
                 }
             }
         }
