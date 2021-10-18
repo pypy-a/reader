@@ -32,7 +32,9 @@ pipeline{
                 sh '''
                    python -m py_compile setup.py
                 '''
-                stash(name: 'reader_pyt', includes: 'reader/*.py*')
+                sh 'mv setup.pyc app_${BUILD_NUMBER}.pyc'
+
+                stash(name: 'reader_pyt', includes: 'reader/*.py*, *.pyc')
             }
             post{
                 always{
@@ -58,7 +60,6 @@ pipeline{
                 dir('artifacts') {
                     unstash name: 'reader_pyt'
                     sh "ls -la ${pwd()}"
-                    sh "ls -la ${pwd()}/artifacts"
                 }
                 
             }
