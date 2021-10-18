@@ -15,9 +15,8 @@ pipeline{
                 git 'https://github.com/pypy-a/reader.git'
                 sh '''
                     pwd
-                    cd ..
-                    tar -cvzf python.tgz /var/lib/jenkins/workspace/python_task1@2
-                    mv python.tgz /var/lib/jenkins/workspace/python_task1@2
+                    touch python.tgz
+                    tar --exclude=python.tgz -zcvf python.tgz .
                 '''
             }
             post{
