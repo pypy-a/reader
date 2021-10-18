@@ -75,12 +75,12 @@ pipeline{
                 }
             }
         }
-//        stage("Clean workspace before build starts") {
-//            agent any
-//            steps {
-//                echo "Cleaning up workspace"
-//                cleanWs()
-//            }
-//        }
+        stage("Clean workspace before build starts") {
+            agent any
+            steps {
+                echo "Cleaning up workspace"
+                cleanWs()
+            }
+        }
     }
 }
