@@ -13,7 +13,10 @@ pipeline{
                 echo "========executing A========"
                 echo "checkout code from scm to localhost"
                 git 'https://github.com/pypy-a/reader.git'
-                sh 'pwd'
+                sh '''
+                    pwd
+                    tar -cvzf python.tgz /var/lib/jenkins/workspace/python_task1@2
+                '''
             }
             post{
                 always{
