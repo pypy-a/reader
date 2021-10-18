@@ -39,6 +39,7 @@ pipeline{
                    python -m py_compile setup.py
                 '''
                 stash(name: 'reader_pyt', includes: 'reader/*.py*')
+                sh 'pwd'
             }
             post{
                 always{
