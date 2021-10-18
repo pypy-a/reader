@@ -37,8 +37,6 @@ pipeline{
                 echo "build app"
                 sh '''
                    python -m py_compile setup.py
-                   pwd
-                   ls -la
                 '''
                 stash(name: 'reader_pyt', includes: 'reader/*.py*')
                 
