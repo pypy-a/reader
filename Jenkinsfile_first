@@ -32,9 +32,9 @@ pipeline{
                 sh '''
                    python -m py_compile setup.py
                 '''
-                sh 'mv setup.pyc pi_readerapp_${BUILD_NUMBER}.pyc'
+                sh 'mv setup.pyc app_${BUILD_NUMBER}.pyc'
 
-                stash(name: 'reader_pyt', includes: 'reader/*.py*, *.pyc')
+                stash(name: 'reader_pyt', includes: 'reader/*, *.pyc')
             }
             post{
                 always{
