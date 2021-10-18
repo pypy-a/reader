@@ -33,7 +33,6 @@ pipeline{
                    python -m py_compile setup.py
                 '''
                 stash(name: 'reader_pyt', includes: 'reader/*.py*')
-                
             }
             post{
                 always{
@@ -45,6 +44,12 @@ pipeline{
                 failure{
                     echo "========B execution failed========"
                 }
+            }
+        }
+        stage("Clean workspace before build starts") {
+            steps {
+                echo "Cleaning up workspace"
+                deleteDir()
             }
         }
     }
