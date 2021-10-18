@@ -34,7 +34,7 @@ pipeline{
                 '''
 //                sh 'mv setup.pyc app_${BUILD_NUMBER}.pyc'
 
-                stash(name: 'reader_pyt', includes: ' build/*, dist/* ')
+                stash(name: 'reader_pyt', includes: 'dist/*')
             }
             post{
                 always{
