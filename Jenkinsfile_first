@@ -1,1 +1,31 @@
-piprline
+pipeline{
+    agent none
+    stages{
+        stage("Clean workspace before build starts") {
+            steps {
+                echo "Cleaning up workspace"
+                deleteDir()
+            }
+        }
+        stage("checkout code to machine"){
+            agent any
+            steps{
+                echo "========executing A========"
+                echo "checkout code from scm to localhost"
+                git 'https://github.com/pypy-a/reader.git'
+                sh 'pwd'
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
+        }
+    }
+}
