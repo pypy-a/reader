@@ -50,7 +50,7 @@ pipeline{
             agent any
             steps {
                 echo "Cleaning up workspace"
-                deleteDir()
+                cleanWs()
             }
         }
     }
