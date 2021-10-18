@@ -51,7 +51,7 @@ pipeline{
         stage("publish app to repo") {
             agent {
                 docker {
-                    image 'python:2-alpine'
+                    image 'python:3.7-alpine'
                 }
             }
             steps{
