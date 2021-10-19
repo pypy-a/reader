@@ -1,5 +1,2 @@
-FROM python:3.7-alpine
-RUN apk update && apk add git \
-    pip install --no-cache-dir --upgrade pip \
-    pip install --no-cache-dir mytest-pythonreader2
-CMD [ "cat", "/etc/os-release" ]
+FROM python:3.7-bullseye
+CMD python3 -m pip install mytest-pythonreader2
