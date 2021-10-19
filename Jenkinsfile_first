@@ -85,6 +85,17 @@ pipeline{
                 echo "Cleaning up workspace"
                 cleanWs()
             }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========D executed successfully========"
+                }
+                failure{
+                    echo "========D execution failed========"
+                }
+            }
         }
     }
 }
