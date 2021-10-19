@@ -7,6 +7,7 @@ pipeline{
                 echo "========executing A========"
                 echo "checkout code from scm to localhost"
                 git 'https://github.com/pypy-a/reader.git'
+                echo "$BUILD_NUMBER"
             }
             post{
                 always{
