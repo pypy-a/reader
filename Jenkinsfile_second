@@ -27,5 +27,12 @@ pipeline{
                 sh 'docker push 948615654/realpython_img:${BUILD_NUMBER}'
             }
         }
+        stage("Clean workspace before build starts") {
+            agent any
+            steps {
+                echo "Cleaning up workspace"
+                cleanWs()
+            }
+        }
     }    
 }
