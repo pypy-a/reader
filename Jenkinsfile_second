@@ -21,5 +21,11 @@ pipeline{
                 sh 'docker build -t realpython_img:${BUILD_NUMBER} .'
             }
         }
+        stage("push image to docker hub"){
+            steps{
+                echo "====++++executing push image to docker hub++++===="
+                sh 'docker push 948615654/realpython_img:${BUILD_NUMBER}'
+            }
+        }
     }    
 }
