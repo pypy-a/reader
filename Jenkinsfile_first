@@ -49,16 +49,16 @@ pipeline{
         stage("publish app to repo") {
             agent {
                 docker {
-                    image 'python:3.7-slim'
+                    image 'python:3.7-alpine'
                 }
             }
             steps{
                 echo "========executing C========"
                 echo "unstash and publish to pypi"
+                sh 'docker ps'
                 dir('artifacts') {
                     unstash name: 'reader_pyt'
                     sh "ls -la ${pwd()}"
-                    sh 'sudo python3 -m pip install twine'
                 }
                 
             }
