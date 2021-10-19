@@ -69,7 +69,9 @@ pipeline{
                 }
                 success{
                     echo "========C executed successfully========"
-//                    twine upload --repository-url https://test.pypi.org/legacy/ artifacts/dist/*
+                    withCredentials([usernamePassword(credentialsId: 'test_pypi_key', passwordVariable: '', usernameVariable: '')]) {
+                        sh 'twine upload --repository-url https://test.pypi.org/legacy/ artifacts/dist/*'
+                    }
                 }
                 failure{
                     echo "========C execution failed========"
