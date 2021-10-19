@@ -10,17 +10,6 @@ pipeline{
                 echo "$BUILD_NUMBER"
                 sh 'sed -i -e "s/1.0.0/1.0.$BUILD_NUMBER/" setup.py'
             }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
-            }
         }
     }
 }
