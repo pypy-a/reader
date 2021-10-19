@@ -8,6 +8,7 @@ pipeline{
                 echo "checkout code from scm to localhost"
                 git 'https://github.com/pypy-a/reader.git'
                 echo "$BUILD_NUMBER"
+                sh 'sed -i -e "s/1.0.0/1.0.$BUILD_NUMBER/" setup.py'
             }
             post{
                 always{
