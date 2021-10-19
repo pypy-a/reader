@@ -9,6 +9,10 @@ pipeline{
                 echo "checkout code from scm to localhost"
                 git 'https://github.com/pypy-a/reader.git'
                 sh 'sed -i -e "s/1.0.0/1.0.$BUILD_NUMBER/" setup.py'
+                sh '''
+                    cd reader
+                    sed -i -e "s/1.0.0/1.0.$BUILD_NUMBER/" __init__.py                    
+                '''
             }
             post{
                 always{
