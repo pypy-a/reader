@@ -55,7 +55,7 @@ pipeline{
         stage("publish app to repo") {
             agent {
                 docker {
-                    image 'python_twain'
+                    image 'python_twine'
                 }
             }
             steps{
