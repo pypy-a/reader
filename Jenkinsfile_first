@@ -32,8 +32,6 @@ pipeline{
                 sh '''
                    python3 setup.py sdist bdist_wheel
                 '''
-//                sh 'mv setup.pyc app_${BUILD_NUMBER}.pyc'
-
                 stash(name: 'reader_pyt', includes: 'dist/*')
             }
             post{
@@ -60,15 +58,18 @@ pipeline{
                 dir('artifacts') {
                     unstash name: 'reader_pyt'
                     sh "ls -la ${pwd()}"
+
                 }
                 
             }
             post{
                 always{
                     echo "========always========"
+                    sh 'twine check artifacts/dist/*'
                 }
                 success{
                     echo "========C executed successfully========"
+//                    twine upload --repository-url https://test.pypi.org/legacy/ artifacts/dist/*
                 }
                 failure{
                     echo "========C execution failed========"
