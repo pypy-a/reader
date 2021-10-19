@@ -58,6 +58,7 @@ pipeline{
                 dir('artifacts') {
                     unstash name: 'reader_pyt'
                     sh "ls -la ${pwd()}"
+                    sh 'sudo su'
                     sh 'apk update && apk add ca-certificates gnupg && rm -rf /var/cache/apk/*'
                     sh 'pip3 install twine'
                 }
