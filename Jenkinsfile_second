@@ -1,0 +1,19 @@
+pipeline{
+    agent none
+    stages{
+        stage('dockerhub login') {
+            steps {
+                echo "============docker hub login============"
+                withCredentials([usernamePassword(credentialsId: 'dockerhub_key', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh "docker login -u $USERNAME -p $PASSWORD"
+                }
+            }
+        }
+        stage("checkout code"){
+            steps{
+                echo "====++++executing checkout code++++===="
+                git branch: 'docker_example', url: 'https://github.com/pypy-a/reader.git' 
+            }
+        }
+    }    
+}
