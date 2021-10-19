@@ -1,4 +1,4 @@
-"""Setup script for realpython-reader"""
+"""Setup script for mytest-pythonreader2"""
 
 # Standard library imports
 import pathlib
