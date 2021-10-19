@@ -49,7 +49,7 @@ pipeline{
         stage("publish app to repo") {
             agent {
                 docker {
-                    image 'python:3.7-alpine'
+                    image 'python_twain'
                 }
             }
             steps{
@@ -59,6 +59,7 @@ pipeline{
                 dir('artifacts') {
                     unstash name: 'reader_pyt'
                     sh "ls -la ${pwd()}"
+                    sh 'twine --version'
                 }
                 
             }
