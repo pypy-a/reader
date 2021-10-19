@@ -58,7 +58,7 @@ pipeline{
                 dir('artifacts') {
                     unstash name: 'reader_pyt'
                     sh "ls -la ${pwd()}"
-
+                    sh 'python3 -m pip install twine'
                 }
                 
             }
