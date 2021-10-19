@@ -6,9 +6,9 @@ For more information see the tutorial [How to Publish an Open-Source Python Pack
 
 ## Installation
 
-You can install the Real Python Feed Reader from [PyPI](https://pypi.org/project/realpython-reader/):
+You can install the Real Python Feed Reader from [PyPI](https://test.pypi.org/project/mytest-pythonreader2/):
 
-    python -m pip install realpython-reader
+    python -m pip install mytest-pythonreader2
 
 The reader is supported on Python 3.7 and above. Older versions of Python, including Python 2.7, are supported by version 1.0.0 of the reader.
 
