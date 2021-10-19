@@ -14,7 +14,7 @@ README = (HERE / "README.md").read_text()
 
 # This call to setup() does all the work
 setup(
-    name="mytest-pythonreader228765",
+    name="mytest-pythonreader2",
     version="1.0.0",
     description="Read the latest Real Python tutorials",
     long_description=README,
