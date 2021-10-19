@@ -55,7 +55,6 @@ pipeline{
             steps{
                 echo "========executing C========"
                 echo "unstash and publish to pypi"
-                sh 'docker ps'
                 dir('artifacts') {
                     unstash name: 'reader_pyt'
                     sh "ls -la ${pwd()}"
