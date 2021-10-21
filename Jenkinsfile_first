@@ -60,7 +60,7 @@ pipeline{
         stage("publish app to repo") {
             agent {
                 docker {
-                    image 'python_twine'
+                    image 'python_twain'
                 }
             }
             steps{
@@ -80,8 +80,8 @@ pipeline{
                 }
                 success{
                     echo "========C executed successfully========"
-                    withCredentials([usernamePassword(credentialsId: 'pypi_key', passwordVariable: 'USERPASS', usernameVariable: 'USERNAME')]) {
-                        sh 'twine upload -u "$USERNAME" -p "$USERPASS" artifacts/dist/*'
+                    withCredentials([usernamePassword(credentialsId: 'test_pypi_key', passwordVariable: 'USERPASS', usernameVariable: 'USERNAME')]) {
+                        sh 'twine upload -u "$USERNAME" -p "$USERPASS" --repository-url https://test.pypi.org/legacy/ artifacts/dist/*'
                     }
                 }
                 failure{
@@ -101,6 +101,12 @@ pipeline{
                 }
                 success{
                     echo "========D executed successfully========"
+                    echo "========Run downstream job========"
+                    build job: 'pyhton_task2',
+                    wait: false,
+                    parameters: [
+                        [$class: 'StringParameterValue', name: 'VERSION', value: "${VERSION}"]
+                    ]
                 }
                 failure{
                     echo "========D execution failed========"
