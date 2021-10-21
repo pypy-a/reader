@@ -102,7 +102,7 @@ pipeline{
                 success{
                     echo "========D executed successfully========"
                     echo "========Run downstream job========"
-                    build job: 'pyhton_task2',
+                    build job: 'python_task2',
                     wait: false,
                     parameters: [
                         [$class: 'StringParameterValue', name: 'VERSION', value: "${VERSION}"]
