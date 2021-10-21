@@ -80,7 +80,7 @@ pipeline{
                 }
                 success{
                     echo "========C executed successfully========"
-                    withCredentials([usernamePassword(credentialsId: 'test_pypi_key', passwordVariable: 'USERPASS', usernameVariable: 'USERNAME')]) {
+                    withCredentials([usernamePassword(credentialsId: 'pypi_key', passwordVariable: 'USERPASS', usernameVariable: 'USERNAME')]) {
                         sh 'twine upload -u "$USERNAME" -p "$USERPASS" artifacts/dist/*'
                     }
                 }
