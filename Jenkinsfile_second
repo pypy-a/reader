@@ -18,13 +18,13 @@ pipeline{
         stage("build image from dockerfile"){
             steps{
                 echo "====++++executing build image from dockerfile++++===="
-                sh 'docker build -t 948615654/realpython_img:${BUILD_NUMBER} .'
+                sh 'docker build -t 948615654/realpython_img:${VERSION} .'
             }
         }
         stage("push image to docker hub"){
             steps{
                 echo "====++++executing push image to docker hub++++===="
-                sh 'docker push 948615654/realpython_img:${BUILD_NUMBER}'
+                sh 'docker push 948615654/realpython_img:${VERSION}'
             }
         }
         stage("Clean workspace before build starts") {
